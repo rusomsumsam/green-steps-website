@@ -1,0 +1,190 @@
+:root {
+    --primary-green: #2e7d32;
+    --dark-bg: #121212;
+    --dark-card: #1e1e1e;
+    --light-text: #ffffff;
+}
+
+/* General */
+body {
+    scroll-behavior: smooth;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    padding-top: 70px;
+}
+
+.container_cus {
+    margin-top: 80px;
+}
+
+@media (max-width: 768px) {
+    .container_cus {
+        margin-top: 60px;
+    }
+}
+
+/* Logo & Navbar */
+.logo {
+    height: 70px;
+    width: auto;
+}
+
+@media (max-width: 768px) {
+    .logo {
+        height: 50px;
+    }
+}
+
+@media (max-width: 576px) {
+    .logo {
+        height: 40px;
+    }
+}
+
+.navbar-brand {
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.navbar {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+/* Navbar toggler fix */
+.navbar-toggler {
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23000000' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280,0,0,0.5%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Theme Toggle */
+/* Remove this if no longer needed */
+#themeToggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1050;
+    display: none;
+    
+}
+
+#themeToggle:hover {
+    background-color: #256029;
+}
+
+/* Tips List */
+#tips-list li {
+    padding: 0.5rem 0;
+}
+
+/* Quiz */
+.quiz-container {
+    text-align: left;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+#quiz-options button {
+    margin-bottom: 0.5rem;
+    width: 100%;
+}
+
+/* Challenge Items */
+.challenge-item {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+
+.challenge-item:hover {
+    transform: scale(1.1);
+}
+
+/* Tree Counter */
+.tree-display {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-green);
+}
+
+/* Product Cards */
+.product-card {
+    display: block;
+}
+
+.product-card[hidden] {
+    display: none !important;
+}
+
+/* Goal List */
+#goalList li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* News Ticker */
+.news-ticker {
+    font-size: 0.95rem;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: ticker 25s linear infinite;
+    margin-bottom: 0;
+}
+
+@keyframes ticker {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Dark Theme */
+.dark-theme {
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+}
+
+.dark-theme .card {
+    background-color: var(--dark-card);
+    border-color: #333;
+}
+
+.dark-theme .navbar {
+    background-color: var(--primary-green) !important;
+}
+
+.dark-theme .btn-outline-secondary {
+    border-color: #ccc;
+    color: var(--light-text);
+}
+
+.dark-theme .btn-outline-secondary:hover {
+    background-color: #444;
+    border-color: #aaa;
+}
+
+.dark-theme .list-group-item {
+    background-color: #2c2c2c;
+    color: #fff;
+}
+
+.dark-theme .alert-info {
+    background-color: #2a2a2a;
+    color: #ffffff;
+}
+
+.dark-theme #themeToggle {
+    background-color: #2c2c2c;
+    color: white;
+}
+
+/* Footer */
+footer {
+    font-size: 0.9rem;
+}
