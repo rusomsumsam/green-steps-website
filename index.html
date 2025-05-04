@@ -6,243 +6,304 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>GreenSteps - Eco Living</title>
 
-        <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="style.css" />
-
         <style>
             html {
-                scroll-behavior: smooth;
+                scroll-padding-top: 80px;
+                /* Navbar height */
             }
+
+            #themeToggle {
+                z-index: 1000;
+            }
+            body {
+                background-image: url('./img/bgThree.webp');
+                background-size: cover;
+                background-position: center center;
+                background-repeat: no-repeat;
+            }
+
         </style>
+
+        <!-- Tailwind CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: '#16a34a',
+                            soft: '#bbf7d0'
+                        }
+                    }
+                }
+            }
+        </script>
+
+        <!-- Font Awesome CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
     </head>
 
-    <body class="bg-light">
-        <!-- Theme Toggle Button -->
-        <button id="themeToggle" class="btn btn-outline-secondary position-fixed top-0 end-0 m-3">
-            <i class="fas fa-moon"></i>
+    <body class="bg-gray-100 text-gray-800">
+
+        <!-- Theme Toggle -->
+        <button id="themeToggle" class="fixed top-16 left-0 bg-white border px-3 py-1 rounded shadow">
+            <i class="fas fa-moon text-black"></i>
         </button>
 
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-success-subtle fixed-top">
-            <div class="container">
-                <a class="navbar-brand fw-bold logo_cus" href="#">
-                    <img class="logo" src="img/logo.png" alt="">
+        <nav class="fixed top-0 w-full bg-green-100 text-green-900 shadow z-50">
+            <div class="max-w-6xl mx-auto px-4 py-2 flex justify-between items-center">
+                <a href="index.html" class="flex items-center font-bold text-xl">
+                    <img src="img/logo.png" alt="logo" class="h-16 mr-2"> <!-- h-16 এ পরিবর্তন করেছি -->
+                    GreenSteps
                 </a>
-                <!-- Dark toggle inside navbar, only on mobile -->
-                <button id="themeToggle" class="btn btn-outline-light d-lg-none me-2" type="button" title="Toggle Theme">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto align-items-center">
-                        <li class="nav-item"><a class="nav-link" href="#tips">Tips</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#footprint">Calculator</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#quiz">Quiz</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#goals">Goals</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
-                        <!-- Desktop view toggle -->
-                        <li class="nav-item d-none d-lg-block ms-3">
-                            <button id="themeToggleDesktop" class="btn btn-outline-light" type="button">
-                                <i class="fas fa-moon"></i>
-                            </button>
-                        </li>
-                    </ul>
+
+
+                <div class="hidden md:flex gap-4 items-center">
+                    <a href="#tips" class="hover:underline">Tips</a>
+                    <a href="#footprint" class="hover:underline">Calculator</a>
+                    <a href="#quiz" class="hover:underline">Quiz</a>
+                    <a href="#goals" class="hover:underline">Goals</a>
+                    <a href="#products" class="hover:underline">Products</a>
                 </div>
+                <!-- Hamburger Icon (Visible on mobile) -->
+                <button id="hamburger" class="md:hidden text-green-900">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
             </div>
         </nav>
 
+        <!-- Mobile Menu (Appears when hamburger is clicked) -->
+        <div id="mobileMenu"
+            class="md:hidden bg-green-200 w-64 fixed top-0 right-0 h-full transform translate-x-full transition-transform duration-300 ease-in-out z-50">
+            <div class="flex justify-between p-4">
+                <a href="#" class="flex items-center font-bold text-xl">
+                    <img src="img/logo.png" alt="logo" class="h-8 mr-2">
+                    GreenSteps
+                </a>
+                <!-- Close Button (Red color) -->
+                <button id="closeMenu" class="text-2xl text-red-600">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="space-y-4 p-4">
+                <a href="#tips" class="block hover:underline">Tips</a>
+                <a href="#footprint" class="block hover:underline">Calculator</a>
+                <a href="#quiz" class="block hover:underline">Quiz</a>
+                <a href="#goals" class="block hover:underline">Goals</a>
+                <a href="#products" class="block hover:underline">Products</a>
+            </div>
+        </div>
 
-        <main class="container container_cus">
+
+
+        <main class="pt-20 max-w-4xl mx-auto px-4">
+
             <!-- Header -->
-            <div class="text-center mb-4">
-                <h1 class="display-5"><i class="fas fa-leaf pr-2"></i> GreenSteps</h1>
-                <p class="lead">Taking small steps for a greener planet</p>
+            <div class="text-center mb-8">
+                <h1 class="text-4xl font-bold"><i class="fas fa-leaf text-green-600 mr-2"></i>GreenSteps</h1>
+                <p class="text-lg text-gray-600">Taking small steps for a greener planet</p>
             </div>
 
             <!-- Daily Tips -->
-            <div class="card mb-4" id="tips">
-                <div class="card-body">
-                    <h2 class="card-title">Daily Eco Tips</h2>
-                    <ul id="tips-list" class="list-group list-group-flush"></ul>
+            <section id="tips" class="bg-gradient-to-b from-green-100 to-green-50 shadow-lg rounded-2xl mb-8 p-6">
+                <h2 class="text-3xl font-bold mb-6 flex items-center gap-3 text-green-900">
+                    <i class="fas fa-leaf text-green-700 text-2xl"></i> Daily Eco Tips
+                </h2>
+                <div id="tips-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Example Tip Card -->
+                    <div
+                        class="bg-gradient-to-r from-green-200 to-lime-100 border border-green-300 rounded-xl p-5 shadow-md hover:shadow-xl transition duration-300 transform hover:-translate-y-1 hover:scale-[1.02]">
+                        <div class="flex items-start gap-4">
+                            <div class="bg-green-600 text-white p-3 rounded-full shadow-md">
+                                <i class="fas fa-recycle text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-green-900 font-semibold">Reuse glass jars instead of plastic containers for storage.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- More cards will be injected dynamically -->
                 </div>
-            </div>
+            </section>
+
+
 
             <!-- Carbon Footprint Estimator -->
-            <div class="card mb-4" id="footprint">
-                <div class="card-body">
-                    <h2 class="card-title">Carbon Footprint Estimator</h2>
-                    <form id="footprint-form" class="row g-3">
-                        <div class="col-md-6">
-                            <label for="km" class="form-label">Kilometers driven weekly</label>
-                            <input type="number" id="km" class="form-control" required />
-                        </div>
-                        <div class="col-md-6">
-                            <label for="flights" class="form-label">Flights per year</label>
-                            <input type="number" id="flights" class="form-control" required />
-                        </div>
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-success">Calculate</button>
-                        </div>
-                    </form>
-                    <p id="result" class="mt-3"></p>
-                </div>
-            </div>
-
-            <!-- Eco Challenge Tracker -->
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h3><i class="fas fa-leaf"></i> Eco Challenge Tracker</h3>
-                    <ul id="challenge-list" class="list-group mb-3">
-                        <li class="list-group-item">
-                            <input class="form-check-input me-2 challenge-item" type="checkbox" />
-                            Turn off lights when not in use
-                        </li>
-                        <li class="list-group-item">
-                            <input class="form-check-input me-2 challenge-item" type="checkbox" />
-                            Use reusable water bottle
-                        </li>
-                        <li class="list-group-item">
-                            <input class="form-check-input me-2 challenge-item" type="checkbox" />
-                            Walk or cycle instead of driving
-                        </li>
-                    </ul>
-                    <button id="resetChallenges" class="btn btn-warning">Reset Challenges</button>
-                </div>
-            </div>
-
-            <!-- Eco Quiz -->
-            <div class="card mb-4" id="quiz">
-                <div class="card-body">
-                    <h2>Eco Quiz: How Green Are You?</h2>
-                    <div id="quiz-question" class="mb-3"></div>
-                    <div id="quiz-options" class="mb-3"></div>
-                    <button id="next-question" class="btn btn-primary" disabled>Next</button>
-                    <div id="quiz-result" class="mt-3" style="display: none;"></div>
-                </div>
-            </div>
-
-            <!-- Eco Goal Tracker -->
-            <div class="card mb-4" id="goals">
-                <div class="card-body">
-                    <h2>🎯 Eco Goal Tracker</h2>
-                    <form id="goalForm" class="input-group mb-3">
-                        <input type="text" id="goalInput" class="form-control" placeholder="তোমার লক্ষ্য লিখো"
+            <section id="footprint" class="bg-gradient-to-br from-green-50 to-white shadow-xl rounded-2xl mb-10 p-8">
+                <h2 class="text-3xl font-bold mb-6 flex items-center gap-3 text-green-800">
+                    <i class="fas fa-globe-americas text-green-600 text-2xl"></i> Carbon Footprint Estimator
+                </h2>
+            
+                <form id="footprint-form" class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="km" class="block text-sm font-semibold text-gray-700 mb-1">🚗 Kilometers driven weekly</label>
+                        <input type="number" id="km" placeholder="e.g., 100"
+                            class="block w-full border border-green-300 rounded-lg p-3 focus:ring-2 focus:ring-green-400 outline-none transition"
                             required />
-                        <button type="submit" class="btn btn-outline-success">যুক্ত করো</button>
-                    </form>
-                    <ul id="goalList" class="list-group"></ul>
+                    </div>
+            
+                    <div>
+                        <label for="flights" class="block text-sm font-semibold text-gray-700 mb-1">✈️ Flights per year</label>
+                        <input type="number" id="flights" placeholder="e.g., 4"
+                            class="block w-full border border-green-300 rounded-lg p-3 focus:ring-2 focus:ring-green-400 outline-none transition"
+                            required />
+                    </div>
+            
+                    <div class="col-span-full">
+                        <button type="submit"
+                            class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 shadow-md transition">🌱
+                            Calculate Footprint</button>
+                    </div>
+                </form>
+            
+                <p id="result" class="mt-6 text-lg text-green-800 font-semibold"></p>
+            </section>
+
+
+            <!-- Quiz -->
+            <section id="quiz" class="bg-gradient-to-br from-green-50 to-white shadow-xl rounded-2xl mb-10 p-8">
+                <h2 class="text-3xl font-bold mb-4 flex items-center gap-2 text-green-800">
+                    <i class="fas fa-question-circle text-green-600"></i> Eco Quiz
+                </h2>
+                <p class="mb-6 text-gray-700 text-lg">🌿 How much do you know about the environment?</p>
+            
+                <div class="bg-white border border-green-200 rounded-lg p-6 shadow hover:shadow-md transition">
+                    <label class="block text-lg font-medium text-gray-800 mb-3">🚴‍♂️ What is the most eco-friendly
+                        transport?</label>
+                    <select class="w-full border border-green-300 rounded-lg p-3 mb-4 focus:ring-2 focus:ring-green-400"
+                        id="quiz-answer">
+                        <option value="">Select an answer</option>
+                        <option value="car">Car</option>
+                        <option value="bike">Bicycle</option>
+                        <option value="plane">Plane</option>
+                    </select>
+                    <button onclick="checkAnswer()"
+                        class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 shadow-md transition">✅
+                        Submit</button>
+                    <p id="quiz-result" class="mt-4 text-lg font-semibold"></p>
                 </div>
-            </div>
+            </section>
+
+
+            <!-- Goals -->
+            <section id="goals" class="bg-gradient-to-br from-green-50 to-white shadow-xl rounded-2xl mb-10 p-8">
+                <h2 class="text-3xl font-bold mb-6 flex items-center gap-2 text-green-800">
+                    <i class="fas fa-bullseye text-green-600"></i> Eco Goals
+                </h2>
+                <form id="goal-form" class="flex flex-col sm:flex-row gap-3 mb-6">
+                    <input type="text" id="goal-input" placeholder="💡 Set an eco-friendly goal..."
+                        class="flex-1 border border-green-300 rounded-lg p-3 focus:ring-2 focus:ring-green-400 outline-none"
+                        required>
+                    <button type="submit"
+                        class="bg-green-600 text-white px-5 py-3 rounded-lg hover:bg-green-700 shadow-md transition">➕ Add
+                        Goal</button>
+                </form>
+            
+                <ul id="goal-list" class="space-y-3">
+                    
+                </ul>
+            </section>
+
+
+            <!-- Products -->
+            <section id="products" class="bg-gradient-to-br from-green-50 to-white shadow-xl rounded-2xl mb-10 p-8">
+                <h2 class="text-3xl font-bold mb-6 flex items-center gap-2 text-green-800">
+                    <i class="fas fa-shopping-basket text-green-600"></i> Eco-Friendly Products
+                </h2>
+            
+                <div class="mb-6">
+                    <label for="filter" class="block text-sm font-medium text-green-700 mb-1">Filter by type:</label>
+                    <select id="filter" class="w-full border border-green-300 rounded-lg p-2 focus:ring-2 focus:ring-green-400">
+                        <option value="all">All</option>
+                        <option value="reusable">Reusable</option>
+                        <option value="organic">Organic</option>
+                    </select>
+                </div>
+            
+                <div id="product-list" class="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+                    
+                </div>
+            </section>
+
 
             <!-- Plant a Tree Counter -->
-            <div class="card mb-4">
-                <div class="card-body text-center">
-                    <h2>🌳 Plant a Tree Counter</h2>
-                    <p>আজকে কতজন গাছ লাগানোর প্রতিজ্ঞা করল?</p>
-                    <div class="display-4 mb-3">
-                        <span id="treeCount">0</span> জন
+            <section id="plant-tree" class="bg-white shadow rounded-lg mb-6 p-6">
+                <h2 class="text-2xl font-semibold mb-4 text-green-800">🌳 গাছ লাগানোর কাউন্টার</h2>
+                <form id="tree-form" class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="trees-planted" class="block text-sm font-medium">আপনি কতটি গাছ লাগিয়েছেন?</label>
+                        <input type="number" id="trees-planted" class="mt-1 block w-full border-gray-300 rounded p-2"
+                            placeholder="এখানে সংখ্যা দিন" required />
                     </div>
-                    <button id="plantTreeBtn" class="btn btn-success">I will plant a tree 🌱</button>
-                </div>
-            </div>
+                    <div class="col-span-full">
+                        <button type="submit"
+                            class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition duration-200 ease-in-out transform hover:scale-105">গাছ
+                            যোগ করুন</button>
+                    </div>
+                </form>
+                <p id="total-trees" class="mt-4 text-lg text-green-700 font-medium">মোট গাছ লাগানো: 0</p>
+            </section>
 
-            <!-- Eco Product Suggestions -->
-            <div class="card mb-4" id="products">
-                <div class="card-body">
-                    <h2>🌿 Eco-Friendly Product Suggestions</h2>
-                    <div class="btn-group mb-3" role="group">
-                        <button type="button" class="btn btn-outline-secondary" data-filter="all">All</button>
-                        <button type="button" class="btn btn-outline-secondary" data-filter="home">Home</button>
-                        <button type="button" class="btn btn-outline-secondary" data-filter="personal">Personal</button>
-                        <button type="button" class="btn btn-outline-secondary" data-filter="travel">Travel</button>
-                    </div>
-                    <div class="row product-list">
-                        <!-- Example product cards -->
-                        <div class="col-md-6 mb-3 product-card" data-category="home">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">Bamboo Toothbrush</h5>
-                                    <p class="card-text">Biodegradable and reusable toothbrush.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-3 product-card" data-category="personal">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">Reusable Water Bottle</h5>
-                                    <p class="card-text">Stay hydrated without plastic waste.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-3 product-card" data-category="travel">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">Solar Charger</h5>
-                                    <p class="card-text">Use the sun to charge your devices sustainably.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-3 product-card" data-category="home">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">Compost Bin</h5>
-                                    <p class="card-text">Turn your kitchen waste into compost.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <!-- Water Usage Calculator -->
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h3>💧 Water Usage Calculator</h3>
-                    <form id="waterForm" class="row g-3">
-                        <div class="col-md-4">
-                            <label class="form-label">🚿 শাওয়ার কতবার নেন প্রতিদিন?</label>
-                            <input type="number" id="shower" class="form-control" min="0" value="1" />
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label">🚽 টয়লেট ফ্লাশ কতবার করেন?</label>
-                            <input type="number" id="flush" class="form-control" min="0" value="3" />
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label">🧼 হাত ধোয়ার সংখ্যা?</label>
-                            <input type="number" id="handwash" class="form-control" min="0" value="5" />
-                        </div>
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary">হিসাব করুন</button>
-                        </div>
-                    </form>
-                    <div id="waterResult" class="mt-3"></div>
-                </div>
-            </div>
+            <section id="water-usage" class="bg-white shadow rounded-lg mb-6 p-6">
+                <h2 class="text-2xl font-semibold mb-4 text-green-800">💧 পানি ব্যবহারের ক্যালকুলেটর</h2>
+                <form id="water-form" class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="shower-time" class="block text-sm font-medium">প্রতিদিন শাওয়ারের সময় (মিনিট)</label>
+                        <input type="number" id="shower-time" class="mt-1 block w-full border-gray-300 rounded p-2"
+                            placeholder="মিনিটে" required />
+                    </div>
+                    <div>
+                        <label for="toilet-flushes" class="block text-sm font-medium">প্রতিদিন টয়লেট ফ্লাশের সংখ্যা</label>
+                        <input type="number" id="toilet-flushes" class="mt-1 block w-full border-gray-300 rounded p-2"
+                            placeholder="ফ্লাশের সংখ্যা" required />
+                    </div>
+                    <div class="col-span-full">
+                        <button type="submit"
+                            class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition duration-200 ease-in-out">হিসাব
+                            করুন</button>
+                    </div>
+                </form>
+                <p id="water-result" class="mt-4 text-lg text-green-700 font-medium"></p>
+            </section>
+
 
             <!-- News Ticker -->
-            <div class="alert alert-info text-center mt-4 news-ticker">
-                🌱 Climate change is accelerating. | ♻️ Recycling rates hit a new high. | 🌍 World Environment Day is
-                June 5th. |
-                🚰 Global water usage up 20% in the last decade.
-            </div>
+            <section id="news-ticker" class="bg-green-700 text-white py-2">
+                <div class="max-w-6xl mx-auto flex justify-between items-center">
+                    <h2 class="font-semibold">Green Steps News</h2>
+                    <marquee class="text-sm">
+                        🌎 পানি বাঁচান, জীবন বাঁচান। আজকের জন্য রিসাইকেল করুন! | 🌱 গাছ লাগান, পৃথিবী বাঁচান | 🌍 কার্বন
+                        ফুটপ্রিন্ট
+                        কমান।
+                    </marquee>
+                </div>
+            </section>
+
+
         </main>
 
-        <!-- Footer -->
-        <footer class="bg-success text-white text-center py-3 mt-4">
-            <p class="mb-0">&copy; 2025 GreenSteps by Fayeka. All rights reserved.</p>
+        <footer class="bg-green-600 text-white text-center py-4 mt-10">
+            <p>&copy; 2025 GreenSteps by Fayeka. All rights reserved.</p>
         </footer>
 
-        <!-- Scripts -->
+        <!-- JS -->
         <script src="script.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Product Preview Modal -->
+        <div id="product-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+            <div class="bg-white rounded-lg max-w-md w-full p-6 relative">
+                <button onclick="closeModal()"
+                    class="absolute top-2 right-3 text-gray-500 hover:text-red-500 text-xl">&times;</button>
+                <img id="modal-img" src="" alt="" class="w-full h-48 object-cover rounded mb-4">
+                <h3 id="modal-name" class="text-xl font-bold text-green-800 mb-2"></h3>
+                <p id="modal-desc" class="text-gray-600 mb-4"></p>
+                <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Add to Cart</button>
+            </div>
+        </div>
+
     </body>
 
 </html>
